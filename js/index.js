@@ -1,4 +1,4 @@
-// 1. When a user presses the record button, start recording actions
+// 1. When a user presses the record button, start recording actions(change recording between true and false)
 // 2. When recording, push an object with the important data to the array
 //			- Clear the array before starting a new recording
 // 3. Stop a recording by pressing the same button
@@ -27,8 +27,9 @@ window.addEventListener('mousemove', (event) => {
 	if (isRecording) {
 		console.log(event.clientX, event.clientY, event.timeStamp)
 		// Record the data to the Array
-	
+	mouseMoves.push(event.clientX,event.clientY, event.timeStamp)
 		}
+		
 	
 	  // this is one of many ways to prevent recording, consider you may also use removeEventListener() as well
 
@@ -37,8 +38,10 @@ window.addEventListener('mousemove', (event) => {
 
 // Start/stop the recording
 $startAndStop.addEventListener('click', (event) => {
-	
+	if($startAndStop= true){
 
+	}
+	console.log('recording')
 })
 
 // Replay recording
