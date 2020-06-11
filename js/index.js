@@ -27,10 +27,13 @@ window.addEventListener('mousemove', (event) => {
 	if (isRecording) {
 		console.log(event.clientX, event.clientY, event.timeStamp)
 		// Record the data to the Array
+	
+		}
+	
 	  // this is one of many ways to prevent recording, consider you may also use removeEventListener() as well
 
 	}
-})
+)
 
 // Start/stop the recording
 $startAndStop.addEventListener('click', (event) => {
