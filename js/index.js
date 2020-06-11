@@ -14,7 +14,7 @@ const $replayRecording = document.getElementById('replayRecording')
 const $cursor = document.getElementById('cursor')
 
 // Variables/data
-let isRecording = true
+let isRecording = false;
 let mouseMoves = [
 	// Examples:
 	// {x: 123, y:212, t:0},
@@ -25,9 +25,10 @@ let mouseMoves = [
 // Each movement of the mouse
 window.addEventListener('mousemove', (event) => {
 	if (isRecording) {
-		console.log(event.clientX, event.clientY, event.timeStamp)
+		// console.log(event.clientX, event.clientY, event.timeStamp)
 		// Record the data to the Array
 	mouseMoves.push(event.clientX,event.clientY, event.timeStamp)
+	
 		}
 		
 	
@@ -37,12 +38,17 @@ window.addEventListener('mousemove', (event) => {
 )
 
 // Start/stop the recording
-$startAndStop.addEventListener('click', (event) => {
-	if($startAndStop= true){
-
-	}
-	console.log('recording')
+$startAndStop.addEventListener('click', () => {
+isRecording = !isRecording
+if(isRecording == true){
+	console.log("Recording")
+}
+else if(isRecording == false){
+	console.log("Not Recording")
+}
 })
+// isRecording = false;
+
 
 // Replay recording
 $replayRecording.addEventListener('click', (event) => {
