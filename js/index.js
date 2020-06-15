@@ -6,56 +6,63 @@
 // 4. Replay the recording by iterating through the Array and move a custom cursor to the position that was recorded
 //			- Ensure there is not current a recording going on (various ways to prevent that case)
 
-
-
 // DOM elements
 const $startAndStop = document.getElementById('startAndStop')
 const $replayRecording = document.getElementById('replayRecording')
-const $cursor = document.getElementById('cursor')
+
 
 // Variables/data
 let isRecording = false;
-let mouseMoves = [
-	// Examples:
-	// {x: 123, y:212, t:0},
-	// {x: 220, y:317, t:100},
-	// {x: 126, y:218, t:145},
-]
+let mouseMoves = []
 
 // Each movement of the mouse
 window.addEventListener('mousemove', (event) => {
 	if (isRecording) {
 		// console.log(event.clientX, event.clientY, event.timeStamp)
 		// Record the data to the Array
-	mouseMoves.push(event.clientX,event.clientY, event.timeStamp)
-	
-		}
-		
-	
-	  // this is one of many ways to prevent recording, consider you may also use removeEventListener() as well
+	mouseMoves.push({x:event.clientX,y:event.clientY, t:event.timeStamp})
+}
 
-	}
-)
+})
 
 // Start/stop the recording
-$startAndStop.addEventListener('click', () => {
+$startAndStop.addEventListener('click', () =>{
 isRecording = !isRecording
 if(isRecording == true){
+			//clear array
+			mouseMoves=[]
 	console.log("Recording")
+
+				
+	
 }
 else if(isRecording == false){
-	console.log("Not Recording")
+	// mouseMoves.forEach(move => {
+	// 	console.log(move)
+	// });
+	console.log("Not Recording");
+
+	
 }
 })
-// isRecording = false;
-
 
 // Replay recording
-$replayRecording.addEventListener('click', (event) => {
-	
-	// Set the x and y for each mouse move recorded (123, 456 are examples)
-	// $cursor.style.setProperty('--x', 123)
-	// $cursor.style.setProperty('--y', 456)
+$replayRecording.addEventListener('click',event =>{
+	const $cursor = document.getElementById('cursor')
 
+	//run through the array
+	mouseMoves.forEach((mouse) =>{
+	mouseMoves.forEach((mouse)=>{
+		//set timeout value to slow down mouse movement
+	setTimeout(()=>{
+	$cursor.style.setProperty('--x',mouse.x)
+	$cursor.style.setProperty('--y',mouse.y)
+	},3000);
+
+
+	})
+	})
 })
+
+	
 
