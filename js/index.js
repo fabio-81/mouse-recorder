@@ -50,21 +50,6 @@ $replayRecording.addEventListener('click',(event)=>{
 })
 	
 
-	//run through the array
-	// mouseMoves.forEach((mouse) =>{
-	// mouseMoves.forEach((mouse)=>{
-		//set timeout value to slow down mouse movement
-	// setTimeout(()=>{
-	// $cursor.style.setProperty('--x',mouse.x)
-	// $cursor.style.setProperty('--y',mouse.y)
-	// },3000);
-
-
-
-	// })
-// })
-
-
 function replay(count){
 
 if(count < mouseMoves.length){
@@ -79,6 +64,10 @@ console.log('hello')
 	
 	})
 	
+}
+else{
+	//reset array
+	mouseMoves = []
 }
 }
 
