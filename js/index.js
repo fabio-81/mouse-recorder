@@ -48,23 +48,27 @@ else if(isRecording == false){
 // Replay recording
 $replayRecording.addEventListener('click',(event)=>{
 	
-	replay()
+	replay(0)
 })
 	
 
-let replay= ()=>{
+let replay = (count)=>{
 
-// if(count < mouseMoves.length){
+if(count < mouseMoves.length){
 	mouseMoves.forEach(movement =>{
 		setTimeout(()=>{
 			$cursor.style.setProperty('--x',movement.x)
 			$cursor.style.setProperty('--y',movement.y)
-			// count++	
-			// replay()
+			count++	
+			replay()
 			
 		},movement.t-startTime);
 	
 	})
+}
+else{
+	mouseMoves = []
+}
 	
 }
 
