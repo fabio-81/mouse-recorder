@@ -30,7 +30,7 @@ $startAndStop.addEventListener('click', () =>{
 isRecording=!isRecording;
 if(isRecording == true){
 	startTime = event.timeStamp
-	
+	$startAndStop.textContent ='Stop Recording'
 	console.log("Recording")
 
 				
@@ -38,7 +38,7 @@ if(isRecording == true){
 }
 else if(isRecording == false){
 	
-
+$startAndStop.textContent='Start Recording'
 	console.log("Not Recording");
 
 	
