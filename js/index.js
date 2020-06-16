@@ -9,7 +9,7 @@
 // DOM elements
 const $startAndStop = document.getElementById('startAndStop')
 const $replayRecording = document.getElementById('replayRecording')
-
+const $cursor = document.getElementById('cursor')
 
 // Variables/data
 let isRecording = false;
@@ -29,17 +29,14 @@ window.addEventListener('mousemove', (event) => {
 $startAndStop.addEventListener('click', () =>{
 isRecording = !isRecording
 if(isRecording == true){
-			//clear array
-			mouseMoves=[]
+
 	console.log("Recording")
 
 				
 	
 }
 else if(isRecording == false){
-	// mouseMoves.forEach(move => {
-	// 	console.log(move)
-	// });
+
 	console.log("Not Recording");
 
 	
@@ -47,22 +44,45 @@ else if(isRecording == false){
 })
 
 // Replay recording
-$replayRecording.addEventListener('click',event =>{
-	const $cursor = document.getElementById('cursor')
-
-	//run through the array
-	mouseMoves.forEach((mouse) =>{
-	mouseMoves.forEach((mouse)=>{
-		//set timeout value to slow down mouse movement
-	setTimeout(()=>{
-	$cursor.style.setProperty('--x',mouse.x)
-	$cursor.style.setProperty('--y',mouse.y)
-	},3000);
-
-
-	})
-	})
+$replayRecording.addEventListener('click',(event)=>{
+	
+	replay(0)
 })
-
 	
 
+	//run through the array
+	// mouseMoves.forEach((mouse) =>{
+	// mouseMoves.forEach((mouse)=>{
+		//set timeout value to slow down mouse movement
+	// setTimeout(()=>{
+	// $cursor.style.setProperty('--x',mouse.x)
+	// $cursor.style.setProperty('--y',mouse.y)
+	// },3000);
+
+
+
+	// })
+// })
+
+
+function replay(count){
+
+if(count < mouseMoves.length){
+	mouseMoves.forEach(movement =>{
+console.log('hello')
+		setTimeout(()=>{
+			$cursor.style.setProperty('--x',movement.x)
+			$cursor.style.setProperty('--y',movement.y)
+			count++			
+			replay()
+		},movement.t);
+	
+	})
+	
+}
+}
+
+
+
+
+	
