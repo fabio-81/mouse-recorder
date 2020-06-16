@@ -51,7 +51,7 @@ $replayRecording.addEventListener('click',(event)=>{
 	replay(0)
 })
 	
-
+//replay function
 let replay = (count)=>{
 
 if(count < mouseMoves.length){
@@ -66,6 +66,7 @@ if(count < mouseMoves.length){
 	
 	})
 }
+//clear array
 else{
 	mouseMoves = []
 }
