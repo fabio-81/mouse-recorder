@@ -14,7 +14,7 @@ const $cursor = document.getElementById('cursor')
 // Variables/data
 let isRecording = false;
 let mouseMoves = []
-
+let startTime = 0;
 // Each movement of the mouse
 window.addEventListener('mousemove', (event) => {
 	if (isRecording) {
@@ -27,15 +27,17 @@ window.addEventListener('mousemove', (event) => {
 
 // Start/stop the recording
 $startAndStop.addEventListener('click', () =>{
-isRecording = !isRecording
+isRecording=!isRecording;
 if(isRecording == true){
-
+	startTime = event.timeStamp
+	
 	console.log("Recording")
 
 				
 	
 }
 else if(isRecording == false){
+	
 
 	console.log("Not Recording");
 
@@ -46,29 +48,24 @@ else if(isRecording == false){
 // Replay recording
 $replayRecording.addEventListener('click',(event)=>{
 	
-	replay(0)
+	replay()
 })
 	
 
-function replay(count){
+let replay= ()=>{
 
-if(count < mouseMoves.length){
+// if(count < mouseMoves.length){
 	mouseMoves.forEach(movement =>{
-console.log('hello')
 		setTimeout(()=>{
 			$cursor.style.setProperty('--x',movement.x)
 			$cursor.style.setProperty('--y',movement.y)
-			count++			
-			replay()
-		},movement.t);
+			// count++	
+			// replay()
+			
+		},movement.t-startTime);
 	
 	})
 	
-}
-else{
-	//reset array
-	mouseMoves = []
-}
 }
 
 
